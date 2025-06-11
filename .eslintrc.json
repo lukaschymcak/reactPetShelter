@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime", // For the new JSX transform in React 17+
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended" // MUST BE THE LAST extension
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+    // "prettier" is included by the "plugin:prettier/recommended" extension
+  ],
+  "rules": {
+    // Suppress errors for missing 'import React' on new JSX transform
+    "react/react-in-jsx-scope": "off",
+    // You can add your own rules here.
+    // e.g., for props validation, you can leave it on or turn it off.
+    "react/prop-types": "off",
+    // This rule is recommended for helping screen readers
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      // Tells eslint-plugin-react to automatically detect the version of React to use
+      "version": "detect"
+    }
+  }
+}

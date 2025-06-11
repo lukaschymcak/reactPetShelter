@@ -1,0 +1,281 @@
+/* client/src/App.css */
+
+/* --- GLOBAL STYLES & VARIABLES --- */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --secondary-color: #6c757d;
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --light-bg: #f8f9fa;
+    --dark-text: #343a40;
+    --light-text: #fff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background: var(--light-text);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    transition: color 0.2s ease-in-out;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* The .active class is automatically added by React Router's NavLink */
+header nav a.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* --- BUTTONS --- */
+button,
+.adopt-button,
+.cta-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover,
+.adopt-button:hover,
+.cta-button:hover {
+    background-color: var(--primary-hover);
+}
+
+button.delete {
+    background-color: var(--danger-color);
+}
+
+button.delete:hover {
+    background-color: var(--danger-hover);
+}
+
+/* --- HOME PAGE --- */
+.home-page {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.home-page h1 {
+    font-size: 3rem;
+}
+
+.home-page p {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+/* --- PET LIST PAGE & FILTER --- */
+.filter-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-container select,
+.filter-container input {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.pet-grid {
+    display: grid;
+    /* This creates a responsive grid that automatically adjusts columns */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* --- PET CARD --- */
+.pet-card {
+    background: var(--light-text);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.pet-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-card-content h3 {
+    margin-top: 0;
+}
+
+.pet-card-content p {
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+}
+
+.pet-card .adopt-button {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* --- ADMIN PAGE & FORM --- */
+.admin-page h2,
+.admin-page h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.pet-form {
+    background: var(--light-text);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pet-form input,
+.pet-form select,
+.pet-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.pet-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.pet-form button {
+    align-self: flex-start; /* Prevents button from stretching full-width */
+}
+
+.admin-pet-list {
+    margin-top: 1rem;
+}
+
+.admin-pet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--light-text);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.admin-pet-item span {
+    font-weight: 500;
+}
+
+.admin-pet-item div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header nav {
+        gap: 1rem;
+    }
+
+    header nav a {
+        font-size: 1rem;
+    }
+
+    .home-page h1 {
+        font-size: 2.5rem;
+    }
+
+    .filter-container {
+        flex-direction: column;
+    }
+}
