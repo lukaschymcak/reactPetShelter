@@ -50,14 +50,14 @@ const PetForm = ({ existingPet, onFormSubmit }) => {
         <form onSubmit={handleSubmit} className="pet-form">
             <h3>{isEditing ? 'Edit Pet' : 'Add a New Pet'}</h3>
             <input
+                required
                 name="name"
                 value={pet.name}
                 onChange={handleChange}
                 placeholder="Name"
-                required
             />
             <label for="type">Type:</label>
-            <select name="type" id="type">
+            <select required onChange={handleChange} name="type" id="type">
                 {Object.values(PetType).map((type) => (
                     <option key={type} value={type}>
                         {type}
@@ -65,12 +65,14 @@ const PetForm = ({ existingPet, onFormSubmit }) => {
                 ))}
             </select>
             <input
+                required
                 name="breed"
                 value={pet.breed}
                 onChange={handleChange}
                 placeholder="Breed"
             />
             <input
+                required
                 name="age"
                 type="number"
                 value={pet.age}
