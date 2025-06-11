@@ -1,6 +1,3 @@
-/* client/src/App.css */
-
-/* --- GLOBAL STYLES & VARIABLES --- */
 :root {
     --primary-color: #007bff;
     --primary-hover: #0056b3;
@@ -48,7 +45,6 @@ hr {
     margin: 2rem 0;
 }
 
-/* --- HEADER & NAVIGATION --- */
 header {
     background: var(--light-text);
     padding: 1rem 0;
@@ -76,13 +72,11 @@ header nav a:hover {
     color: var(--primary-color);
 }
 
-/* The .active class is automatically added by React Router's NavLink */
 header nav a.active {
     color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
 }
 
-/* --- BUTTONS --- */
 button,
 .adopt-button,
 .cta-button {
@@ -148,12 +142,11 @@ button.delete:hover {
 
 .pet-grid {
     display: grid;
-    /* This creates a responsive grid that automatically adjusts columns */
+
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-/* --- PET CARD --- */
 .pet-card {
     background: var(--light-text);
     border-radius: 8px;
@@ -172,7 +165,7 @@ button.delete:hover {
 .pet-card img {
     width: 100%;
     height: 220px;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-fit: cover;
 }
 
 .pet-card-content {
@@ -196,7 +189,6 @@ button.delete:hover {
     width: 100%;
 }
 
-/* --- ADMIN PAGE & FORM --- */
 .admin-page h2,
 .admin-page h3 {
     border-bottom: 2px solid var(--primary-color);
@@ -230,7 +222,7 @@ button.delete:hover {
 }
 
 .pet-form button {
-    align-self: flex-start; /* Prevents button from stretching full-width */
+    align-self: flex-start;
 }
 
 .admin-pet-list {
@@ -257,7 +249,6 @@ button.delete:hover {
     gap: 0.5rem;
 }
 
-/* --- RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
     .container {
         padding: 1rem;

@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+    db:
+        image: postgres:14-alpine
+        container_name: petshelter_db
+        restart: always
+        environment:
+            - POSTGRES_USER=myuser
+            - POSTGRES_PASSWORD=mypassword
+            - POSTGRES_DB=petshelter
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        ports:
+            - '5432:5432'
+        networks:
+            - app-network
+
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: petshelter_backend
+        restart: always
+        environment:
+            - DB_HOST=db
+            - DB_PORT=5432
+            - DB_USERNAME=myuser
+            - DB_PASSWORD=mypassword
+            - DB_DATABASE=petshelter
+        ports:
+            - '3000:3000'
+        depends_on:
+            - db
+        networks:
+            - app-network
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: petshelter_frontend
+        restart: always
+        ports:
+            - '8080:80'
+        depends_on:
+            - backend
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    pgdata:
